@@ -197,6 +197,11 @@ const PDFSummarizer: React.FC = () => {
             </Card>
           )}
 
+          {success && (
+            <div className="mb-4 bg-green-50 border border-green-200 text-green-700 px-4 py-3 rounded-lg">
+              PDF summarized successfully
+            </div>
+          )}
           {/* Summary Display */}
           {summary && !isLoading && (
             <Card title="Summary" subtitle="AI-generated summary of your PDF">
