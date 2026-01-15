@@ -32,39 +32,58 @@ pip install -r requirements.txt
 uvicorn main:app --reload --port 8080
 
 # Project Structure:
-LearnTrack/
-├── backend/
-│   ├── main.py
-│   ├── database.py
-│   ├── models.py
-│   ├── schemas.py
-│   ├── models.py
-│   ├── auth.py
-│   ├── dependencies.py
-│   ├── streaks.py
-│   ├── routers/
-│   │   ├── study_items.py
-│   │   ├── dashboard.py
-│   │   ├── leaderboard.py
-│   │   ├── ai.py
-│   │   ├── auth.py
-│   │   ├── pdf.py
+project-root/
 │
 ├── frontend/
+│   │
+│   ├── public/
+│   │
 │   ├── src/
 │   │   ├── pages/
-│   │   ├── services/
-│   │   ├── components/
-│   │   │  ├── auth/
-│   │   │  ├── common/
-│   │   │   ├── layout/
-│   │   ├── context/
-│   │   ├── types/
-│   │   ├── utils/
+│   │   │   ├── Login.tsx
+│   │   │   ├── Register.tsx
+│   │   │   ├── Dashboard.tsx
+│   │   │   ├── StudyItems.tsx        # Tasks + Plans UI
+│   │   │   ├── Leaderboard.tsx
+│   │   │   ├── AIAssistant.tsx
+│   │   │   └── PDFSummarizer.tsx
+│   │   │
+│   │   ├── components/               # Reusable UI components
+│   │   ├── services/                 # API calls (Axios)
+│   │   ├── context/                  # State management (Auth, Global state)
+│   │   ├── routes/                   # Protected routes & route guards
+│   │   ├── styles/                   # Tailwind / global styles
 │   │   ├── App.tsx
-│   │   ├── main.tsx
-│   │   ├── index.css
-│   ├── index.html
+│   │   └── main.tsx
+│   │
+│   ├── package.json
+│   └── tsconfig.json
+│
+├── backend/
+│   │
+│   ├── main.py                       # FastAPI application entry point
+│   ├── database.py                   # Database connection & SQLAlchemy Base
+│   ├── dependencies.py               # Common dependencies (DB session)
+│   ├── auth.py                       # JWT, password hashing, auth utilities
+│   ├── config.py                     # Environment & API configuration
+│   │
+│   ├── models.py                     # SQLAlchemy models (User, StudyItem)
+│   ├── schemas.py                    # Pydantic schemas
+│   │
+│   ├── routers/
+│   │   ├── auth.py                   # Authentication routes
+│   │   ├── study_items.py            # Tasks + Plans APIs
+│   │   ├── leaderboard.py            # Leaderboard APIs
+│   │   ├── ai.py                     # AI assistant APIs
+│   │   └── pdf.py                    # PDF summarizer APIs
+│   │
+│   ├── .env                          # Environment variables
+│   ├── requirements.txt              # Backend dependencies
+│   └── README.md                     # Backend documentation
+│
+├── .gitignore
+└── README.md                         # Project documentation
+
 
 
 
