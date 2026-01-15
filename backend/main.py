@@ -1,7 +1,7 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from database import Base, engine
-from routers import auth, tasks, leaderboard, ai, pdf, plans, dashboard
+from routers import auth, leaderboard, ai, pdf, dashboard, study_items
 import config 
 
 Base.metadata.create_all(bind=engine)
@@ -24,8 +24,7 @@ app.add_middleware(
 # ------------------------
 
 app.include_router(auth.router)
-app.include_router(tasks.router)
-app.include_router(plans.router)
+app.include_router(study_items.router)
 app.include_router(leaderboard.router)
 app.include_router(ai.router)
 app.include_router(pdf.router)

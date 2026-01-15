@@ -7,8 +7,7 @@ import ProtectedRoute from './components/auth/ProtectedRoute';
 import Login from './pages/Login';
 import Register from './pages/Register';
 import Dashboard from './pages/Dashboard';
-import Tasks from './pages/Tasks';
-import Plans from './pages/Plans';
+import StudyItems from './pages/StudyItems';
 import Leaderboard from './pages/Leaderboard';
 import AIAssistant from './pages/AIAssistant';
 import PDFSummarizer from './pages/PDFSummarizer';
@@ -35,21 +34,14 @@ const App: React.FC = () => {
             }
           />
           <Route
-            path="/tasks"
+            path="/study-items"
             element={
               <ProtectedRoute>
-                <Tasks />
+                <StudyItems />
               </ProtectedRoute>
+          
             }
           />
-          <Route
-            path="/plans"
-            element={
-            <ProtectedRoute>
-              <Plans />
-            </ProtectedRoute>
-            }
-          />    
 
           <Route
             path="/leaderboard"
@@ -76,11 +68,11 @@ const App: React.FC = () => {
             }
           />
 
-          {/* Default Route - Redirect to dashboard */}
-          <Route path="/" element={<Navigate to="/dashboard" replace />} />
+          {/* Default Route - Redirect to login */}
+          <Route path="/" element={<Navigate to="/login" replace />} />
           
-          {/* 404 - Redirect to dashboard */}
-          <Route path="*" element={<Navigate to="/dashboard" replace />} />
+          {/* 404 - Redirect to login */}
+          <Route path="*" element={<Navigate to="/login" replace />} />
         </Routes>
       </Router>
     </AuthProvider>

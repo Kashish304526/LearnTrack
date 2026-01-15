@@ -161,7 +161,7 @@ const Leaderboard: React.FC = () => {
           )}
 
           {/* Full Leaderboard */}
-          <Card title="Rankings" subtitle="All users ranked by learning streak">
+          <Card title="Top 10 Rankings" subtitle="All users ranked by learning streak">
             {users.length > 0 ? (
               <div className="space-y-3">
                 {users.map((user) => {

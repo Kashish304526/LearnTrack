@@ -15,47 +15,23 @@ class User(Base):
     last_completed_date = Column(Date, nullable=True)
 
     # Relationships
-    tasks = relationship(
-        "Task",
-        back_populates="owner",
-        cascade="all, delete"
-    )
-
-    plans = relationship(
-        "Plan",
-        back_populates="owner",
-        cascade="all, delete"
-    )
+    study_items = relationship("StudyItem", back_populates="owner")
 
 
-class Task(Base):
-    __tablename__ = "tasks"
+class StudyItem(Base):
+    __tablename__ = "study_items"
 
-    id = Column(Integer, primary_key=True, index=True)
+    id = Column(Integer, primary_key=True)
     title = Column(String, nullable=False)
+    description = Column(String)
+    type = Column(String)  # "task" or "plan"
+
     completed = Column(Boolean, default=False)
     completed_date = Column(Date, nullable=True)
 
-    owner_id = Column(Integer, ForeignKey("users.id"), nullable=False)
-
-    owner = relationship(
-        "User",
-        back_populates="tasks"
-    )
+    owner_id = Column(Integer, ForeignKey("users.id"))
+    owner = relationship("User", back_populates="study_items")
 
 
-class Plan(Base):
-    __tablename__ = "plans"
-
-    id = Column(Integer, primary_key=True, index=True)
-    title = Column(String, nullable=False)
-    description = Column(String, nullable=True)
-
-    owner_id = Column(Integer, ForeignKey("users.id"), nullable=False)
-
-    owner = relationship(
-        "User",
-        back_populates="plans"
-    )
 
 

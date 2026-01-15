@@ -1,7 +1,17 @@
-import React, { useState } from 'react';
-import { Link, useNavigate, useLocation } from 'react-router-dom';
-import { useAuth } from '../../context/AuthContext';
-import { BookOpen, LayoutDashboard, ListTodo, Trophy, Bot, FileText, LogOut, Menu, X } from 'lucide-react';
+import React, { useState } from "react";
+import { Link, useNavigate, useLocation } from "react-router-dom";
+import { useAuth } from "../../context/AuthContext";
+import {
+  BookOpen,
+  LayoutDashboard,
+  Layers,
+  Trophy,
+  Bot,
+  FileText,
+  LogOut,
+  Menu,
+  X,
+} from "lucide-react";
 
 /**
  * Navigation bar component with responsive mobile menu
@@ -14,16 +24,16 @@ const Navbar: React.FC = () => {
 
   const handleLogout = () => {
     logout();
-    navigate('/login');
+    navigate("/login");
   };
 
+  // UPDATED NAV ITEMS (Tasks + Plans → Study Items)
   const navItems = [
-    { path: '/dashboard', icon: LayoutDashboard, label: 'Dashboard' },
-    { path: '/tasks', icon: ListTodo, label: 'Tasks' },
-    { path: '/plans', icon: BookOpen, label: 'Plans' },
-    { path: '/leaderboard', icon: Trophy, label: 'Leaderboard' },
-    { path: '/ai-assistant', icon: Bot, label: 'AI Assistant' },
-    { path: '/pdf-summarizer', icon: FileText, label: 'PDF Summarizer' },
+    { path: "/dashboard", icon: LayoutDashboard, label: "Dashboard" },
+    { path: "/study-items", icon: Layers, label: "Study Items" },
+    { path: "/leaderboard", icon: Trophy, label: "Leaderboard" },
+    { path: "/ai-assistant", icon: Bot, label: "AI Assistant" },
+    { path: "/pdf-summarizer", icon: FileText, label: "PDF Summarizer" },
   ];
 
   const isActive = (path: string) => location.pathname === path;
@@ -36,7 +46,9 @@ const Navbar: React.FC = () => {
           <div className="flex items-center">
             <Link to="/dashboard" className="flex items-center space-x-2">
               <BookOpen className="h-8 w-8 text-primary-600" />
-              <span className="text-xl font-bold text-gray-800">LearnTrack</span>
+              <span className="text-xl font-bold text-gray-800">
+                LearnTrack
+              </span>
             </Link>
           </div>
 
@@ -48,14 +60,15 @@ const Navbar: React.FC = () => {
                 to={item.path}
                 className={`flex items-center space-x-2 px-4 py-2 rounded-lg transition-colors ${
                   isActive(item.path)
-                    ? 'bg-primary-50 text-primary-700'
-                    : 'text-gray-600 hover:bg-gray-100'
+                    ? "bg-primary-50 text-primary-700"
+                    : "text-gray-600 hover:bg-gray-100"
                 }`}
               >
                 <item.icon className="h-5 w-5" />
                 <span className="font-medium">{item.label}</span>
               </Link>
             ))}
+
             <button
               onClick={handleLogout}
               className="flex items-center space-x-2 px-4 py-2 text-gray-600 hover:bg-red-50 hover:text-red-600 rounded-lg transition-colors ml-2"
@@ -92,14 +105,15 @@ const Navbar: React.FC = () => {
                 onClick={() => setIsMobileMenuOpen(false)}
                 className={`flex items-center space-x-3 px-3 py-3 rounded-lg transition-colors ${
                   isActive(item.path)
-                    ? 'bg-primary-50 text-primary-700'
-                    : 'text-gray-600 hover:bg-gray-100'
+                    ? "bg-primary-50 text-primary-700"
+                    : "text-gray-600 hover:bg-gray-100"
                 }`}
               >
                 <item.icon className="h-5 w-5" />
                 <span className="font-medium">{item.label}</span>
               </Link>
             ))}
+
             <button
               onClick={() => {
                 handleLogout();

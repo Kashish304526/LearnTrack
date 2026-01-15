@@ -16,13 +16,16 @@ def get_dashboard(
         models.User.email == user_email
     ).first()
 
-    total_tasks = db.query(models.Task).filter(
-        models.Task.owner_id == user.id
+    # -------- TASK PROGRESS --------
+    total_tasks = db.query(models.StudyItem).filter(
+        models.StudyItem.owner_id == user.id,
+        models.StudyItem.type == "task"
     ).count()
 
-    completed_tasks = db.query(models.Task).filter(
-        models.Task.owner_id == user.id,
-        models.Task.completed == True
+    completed_tasks = db.query(models.StudyItem).filter(
+        models.StudyItem.owner_id == user.id,
+        models.StudyItem.type == "task",
+        models.StudyItem.completed == True
     ).count()
 
     pending_tasks = total_tasks - completed_tasks
@@ -31,6 +34,12 @@ def get_dashboard(
         (completed_tasks / total_tasks) * 100
         if total_tasks > 0 else 0
     )
+
+    # -------- PLANS COUNT (OPTIONAL) --------
+    total_plans = db.query(models.StudyItem).filter(
+        models.StudyItem.owner_id == user.id,
+        models.StudyItem.type == "plan"
+    ).count()
 
     return {
         "progress": {
@@ -42,5 +51,9 @@ def get_dashboard(
         "streak": {
             "current_streak": user.current_streak,
             "last_completed_date": user.last_completed_date
+        },
+        "plans": {
+            "total_plans": total_plans
         }
     }
+
