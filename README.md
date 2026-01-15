@@ -19,71 +19,17 @@ The project is about building a Smart Study Planner and Track Task that helps us
 -	Store all data securely in the backend database.
 
 ## How to Run
-Frontend:
-cd frontend
-npm install
-npm run dev
+### Frontend:
+--cd frontend
+--npm install
+--npm run dev
 
-Backend:
-cd backend
-python -m venv venv
-venv\Scripts\activate
-pip install -r requirements.txt
-uvicorn main:app --reload --port 8080
-
-# Project Structure:
-project-root/
-│
-├── frontend/
-│   │
-│   ├── public/
-│   │
-│   ├── src/
-│   │   ├── pages/
-│   │   │   ├── Login.tsx
-│   │   │   ├── Register.tsx
-│   │   │   ├── Dashboard.tsx
-│   │   │   ├── StudyItems.tsx        # Tasks + Plans UI
-│   │   │   ├── Leaderboard.tsx
-│   │   │   ├── AIAssistant.tsx
-│   │   │   └── PDFSummarizer.tsx
-│   │   │
-│   │   ├── components/               # Reusable UI components
-│   │   ├── services/                 # API calls (Axios)
-│   │   ├── context/                  # State management (Auth, Global state)
-│   │   ├── routes/                   # Protected routes & route guards
-│   │   ├── styles/                   # Tailwind / global styles
-│   │   ├── App.tsx
-│   │   └── main.tsx
-│   │
-│   ├── package.json
-│   └── tsconfig.json
-│
-├── backend/
-│   │
-│   ├── main.py                       # FastAPI application entry point
-│   ├── database.py                   # Database connection & SQLAlchemy Base
-│   ├── dependencies.py               # Common dependencies (DB session)
-│   ├── auth.py                       # JWT, password hashing, auth utilities
-│   ├── config.py                     # Environment & API configuration
-│   │
-│   ├── models.py                     # SQLAlchemy models (User, StudyItem)
-│   ├── schemas.py                    # Pydantic schemas
-│   │
-│   ├── routers/
-│   │   ├── auth.py                   # Authentication routes
-│   │   ├── study_items.py            # Tasks + Plans APIs
-│   │   ├── leaderboard.py            # Leaderboard APIs
-│   │   ├── ai.py                     # AI assistant APIs
-│   │   └── pdf.py                    # PDF summarizer APIs
-│   │
-│   ├── .env                          # Environment variables
-│   ├── requirements.txt              # Backend dependencies
-│   └── README.md                     # Backend documentation
-│
-├── .gitignore
-└── README.md                         # Project documentation
-
+### Backend:
+--cd backend
+--python -m venv venv
+--venv\Scripts\activate
+--pip install -r requirements.txt
+--uvicorn main:app --reload --port 8080
 
 
 
