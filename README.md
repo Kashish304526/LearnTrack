@@ -53,11 +53,10 @@ project-root/
 │ │ │ ├── AIAssistant.tsx
 │ │ │ └── PDFSummarizer.tsx
 │ │ │
-│ │ ├── components/ # Reusable UI components
-│ │ ├── services/ # API calls (Axios)
-│ │ ├── context/ # Global & Auth state
-│ │ ├── routes/ # Protected routes
-│ │ ├── styles/ # Tailwind / global styles
+│ │ ├── components/ 
+│ │ ├── services/ 
+│ │ ├── context/ 
+│ │ ├── routes/ 
 │ │ ├── App.tsx
 │ │ └── main.tsx
 │ │
@@ -66,23 +65,23 @@ project-root/
 │
 ├── backend/
 │ │
-│ ├── main.py # FastAPI entry point
-│ ├── database.py # Database connection
-│ ├── dependencies.py # Common dependencies
-│ ├── auth.py # JWT & auth utilities
-│ ├── config.py # Environment configuration
+│ ├── main.py 
+│ ├── database.py 
+│ ├── dependencies.py 
+│ ├── auth.py
+│ ├── config.py 
 │ │
-│ ├── models.py # SQLAlchemy models
-│ ├── schemas.py # Pydantic schemas
+│ ├── models.py 
+│ ├── schemas.py
 │ │
 │ ├── routers/
-│ │ ├── auth.py # Authentication APIs
-│ │ ├── study_items.py # Tasks & Plans APIs
-│ │ ├── leaderboard.py # Leaderboard APIs
-│ │ ├── ai.py # AI assistant APIs
-│ │ └── pdf.py # PDF summarizer APIs
+│ │ ├── auth.py 
+│ │ ├── study_items.py
+│ │ ├── leaderboard.py
+│ │ ├── ai.py 
+│ │ └── pdf.py 
 │ │
-│ ├── .env # Environment variables
+│ ├── .env 
 │ ├── requirements.txt
 │ └── README.md
 │
@@ -91,4 +90,6 @@ project-root/
 ```
 
 
-- Jaiswal Kashish
+
+
+-- Jaiswal Kashish
