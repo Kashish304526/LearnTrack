@@ -8,7 +8,7 @@ The project is about building a Smart Study Planner and Track Task that helps us
 - Authentication: JWT
 
 ## Features
---	User registration and login
+- User registration and login
 -	Create and manage daily study tasks
 -	Create study plans for different subjects/topics
 -	Mark tasks as completed
@@ -20,17 +20,75 @@ The project is about building a Smart Study Planner and Track Task that helps us
 
 ## How to Run
 ### Frontend:
+```
 --cd frontend
 --npm install
 --npm run dev
+```
 
 ### Backend:
+```
 --cd backend
 --python -m venv venv
 --venv\Scripts\activate
 --pip install -r requirements.txt
 --uvicorn main:app --reload --port 8080
+```
 
+## Project Structure:
+```text
+project-root/
+│
+├── frontend/
+│ │
+│ ├── public/
+│ │
+│ ├── src/
+│ │ ├── pages/
+│ │ │ ├── Login.tsx
+│ │ │ ├── Register.tsx
+│ │ │ ├── Dashboard.tsx
+│ │ │ ├── StudyItems.tsx # Tasks + Plans UI
+│ │ │ ├── Leaderboard.tsx
+│ │ │ ├── AIAssistant.tsx
+│ │ │ └── PDFSummarizer.tsx
+│ │ │
+│ │ ├── components/ # Reusable UI components
+│ │ ├── services/ # API calls (Axios)
+│ │ ├── context/ # Global & Auth state
+│ │ ├── routes/ # Protected routes
+│ │ ├── styles/ # Tailwind / global styles
+│ │ ├── App.tsx
+│ │ └── main.tsx
+│ │
+│ ├── package.json
+│ └── tsconfig.json
+│
+├── backend/
+│ │
+│ ├── main.py # FastAPI entry point
+│ ├── database.py # Database connection
+│ ├── dependencies.py # Common dependencies
+│ ├── auth.py # JWT & auth utilities
+│ ├── config.py # Environment configuration
+│ │
+│ ├── models.py # SQLAlchemy models
+│ ├── schemas.py # Pydantic schemas
+│ │
+│ ├── routers/
+│ │ ├── auth.py # Authentication APIs
+│ │ ├── study_items.py # Tasks & Plans APIs
+│ │ ├── leaderboard.py # Leaderboard APIs
+│ │ ├── ai.py # AI assistant APIs
+│ │ └── pdf.py # PDF summarizer APIs
+│ │
+│ ├── .env # Environment variables
+│ ├── requirements.txt
+│ └── README.md
+│
+├── .gitignore
+└── README.md
+```
 
 
 - Jaiswal Kashish
