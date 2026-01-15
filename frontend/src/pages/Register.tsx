@@ -24,6 +24,10 @@ const Register: React.FC = () => {
     e.preventDefault();
     setError('');
 
+    if (!email.trim()) return "Email is required";
+    if (!password.trim()) return "Password is required";
+    if (!confirmPassword.trim())
+    return "Confirm password is required";
     // Validate password match
     if (password !== confirmPassword) {
       setError('Passwords do not match');
@@ -102,7 +106,7 @@ const Register: React.FC = () => {
               required
             />
 
-            <Button
+            <Button disabled={!email || !password || !confirmPassword}
               type="submit"
               variant="primary"
               size="lg"

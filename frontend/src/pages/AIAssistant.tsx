@@ -5,6 +5,9 @@ import Button from '../components/common/Button';
 import Loader from '../components/common/Loader';
 import Navbar from '../components/layout/Navbar';
 import { Bot, Send, MessageCircle } from 'lucide-react';
+import ReactMarkdown from "react-markdown";
+import remarkGfm from "remark-gfm";
+
 
 interface Message {
   type: 'user' | 'ai';
@@ -104,7 +107,18 @@ const AIAssistant: React.FC = () => {
                           {message.type === 'ai' && (
                             <Bot className="h-5 w-5 text-primary-600 flex-shrink-0 mt-0.5" />
                           )}
-                          <p className="whitespace-pre-wrap break-words">{message.content}</p>
+                          {message.type === "ai" ? (
+                            <div className="prose max-w-none">
+                              <ReactMarkdown remarkPlugins={[remarkGfm]}>
+                                  {message.content}
+                              </ReactMarkdown>
+                            </div>
+                            ) : (
+                                <p className="whitespace-pre-wrap break-words">
+                                    {message.content}
+                                </p>
+                              )}
+
                         </div>
                       </div>
                     </div>

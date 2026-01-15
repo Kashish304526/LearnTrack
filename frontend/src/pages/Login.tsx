@@ -7,21 +7,40 @@ import Input from '../components/common/Input';
 import Card from '../components/common/Card';
 import { BookOpen } from 'lucide-react';
 
-/**
- * Login page component
- */
 const Login: React.FC = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
   const [isLoading, setIsLoading] = useState(false);
-  
+
   const { login } = useAuth();
   const navigate = useNavigate();
 
+  // ✅ Frontend-only validation
+  const validateLogin = () => {
+    if (!email.trim()) return 'Email is required';
+    if (!password.trim()) return 'Password is required';
+
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(email)) return 'Invalid email format';
+
+    if (password.length < 6)
+      return 'Password must be at least 6 characters';
+
+    return null;
+  };
+
+  // ✅ SINGLE submit handler
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setError('');
+
+    const validationError = validateLogin();
+    if (validationError) {
+      setError(validationError);
+      return;
+    }
+
     setIsLoading(true);
 
     try {
@@ -29,7 +48,10 @@ const Login: React.FC = () => {
       login(response.access_token);
       navigate('/dashboard');
     } catch (err: any) {
-      setError(err.response?.data?.detail || 'Invalid credentials. Please try again.');
+      setError(
+        err.response?.data?.detail ||
+        'Invalid credentials. Please try again.'
+      );
     } finally {
       setIsLoading(false);
     }
@@ -38,18 +60,20 @@ const Login: React.FC = () => {
   return (
     <div className="min-h-screen bg-gradient-to-br from-primary-50 to-primary-100 flex items-center justify-center px-4">
       <div className="max-w-md w-full">
-        {/* Logo and Title */}
         <div className="text-center mb-8">
           <div className="flex justify-center mb-4">
             <div className="bg-primary-600 p-3 rounded-full">
               <BookOpen className="h-10 w-10 text-white" />
             </div>
           </div>
-          <h1 className="text-3xl font-bold text-gray-800">Welcome to LearnTrack</h1>
-          <p className="text-gray-600 mt-2">Sign in to continue your learning journey</p>
+          <h1 className="text-3xl font-bold text-gray-800">
+            Welcome to LearnTrack
+          </h1>
+          <p className="text-gray-600 mt-2">
+            Sign in to continue your learning journey
+          </p>
         </div>
 
-        {/* Login Form */}
         <Card>
           <form onSubmit={handleSubmit} className="space-y-4">
             {error && (
@@ -63,7 +87,10 @@ const Login: React.FC = () => {
               label="Email"
               placeholder="Enter your email"
               value={email}
-              onChange={(e) => setEmail(e.target.value)}
+              onChange={(e) => {
+                setEmail(e.target.value);
+                setError('');
+              }}
               required
             />
 
@@ -72,11 +99,14 @@ const Login: React.FC = () => {
               label="Password"
               placeholder="Enter your password"
               value={password}
-              onChange={(e) => setPassword(e.target.value)}
+              onChange={(e) => {
+                setPassword(e.target.value);
+                setError('');
+              }}
               required
             />
 
-            <Button
+            <Button disabled={!email || !password}
               type="submit"
               variant="primary"
               size="lg"
@@ -89,8 +119,11 @@ const Login: React.FC = () => {
 
           <div className="mt-6 text-center">
             <p className="text-gray-600">
-              Don't have an account?{' '}
-              <Link to="/register" className="text-primary-600 hover:text-primary-700 font-medium">
+              Don&apos;t have an account?{' '}
+              <Link
+                to="/register"
+                className="text-primary-600 hover:text-primary-700 font-medium"
+              >
                 Sign up
               </Link>
             </p>

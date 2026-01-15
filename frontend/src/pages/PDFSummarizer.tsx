@@ -4,6 +4,8 @@ import Card from '../components/common/Card';
 import Button from '../components/common/Button';
 import Loader from '../components/common/Loader';
 import Navbar from '../components/layout/Navbar';
+import ReactMarkdown from "react-markdown";
+import remarkGfm from "remark-gfm";
 import { FileText, Upload, CheckCircle, AlertCircle } from 'lucide-react';
 
 /**
@@ -146,12 +148,18 @@ const PDFSummarizer: React.FC = () => {
               )}
 
               {/* Success Message */}
-              {success && (
-                <div className="bg-green-50 border border-green-200 text-green-700 px-4 py-3 rounded-lg flex items-start space-x-3">
-                  <CheckCircle className="h-5 w-5 flex-shrink-0 mt-0.5" />
-                  <p>PDF summarized successfully!</p>
+              {summary && (
+                <div className="mt-6">
+                  <h3 className="text-lg font-semibold mb-2">Summary</h3>
+
+                  <div className="prose max-w-none bg-white p-4 rounded border">
+                    <ReactMarkdown remarkPlugins={[remarkGfm]}>
+                      {summary}
+                    </ReactMarkdown>
+                  </div>
                 </div>
               )}
+
 
               {/* Action Buttons */}
               <div className="flex gap-3">
