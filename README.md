@@ -8,7 +8,7 @@ The project is about building a Smart Study Planner and Track Task that helps us
 - Authentication: JWT
 
 ## Features
---	User registration and login
+- User registration and login
 -	Create and manage daily study tasks
 -	Create study plans for different subjects/topics
 -	Mark tasks as completed
@@ -19,53 +19,77 @@ The project is about building a Smart Study Planner and Track Task that helps us
 -	Store all data securely in the backend database.
 
 ## How to Run
-Frontend:
-cd frontend
-npm install
-npm run dev
+### Frontend:
+```
+--cd frontend
+--npm install
+--npm run dev
+```
 
-Backend:
-cd backend
-python -m venv venv
-venv\Scripts\activate
-pip install -r requirements.txt
-uvicorn main:app --reload --port 8080
+### Backend:
+```
+--cd backend
+--python -m venv venv
+--venv\Scripts\activate
+--pip install -r requirements.txt
+--uvicorn main:app --reload --port 8080
+```
 
-# Project Structure:
-LearnTrack/
-├── backend/
-│   ├── main.py
-│   ├── database.py
-│   ├── models.py
-│   ├── schemas.py
-│   ├── models.py
-│   ├── auth.py
-│   ├── dependencies.py
-│   ├── streaks.py
-│   ├── routers/
-│   │   ├── study_items.py
-│   │   ├── dashboard.py
-│   │   ├── leaderboard.py
-│   │   ├── ai.py
-│   │   ├── auth.py
-│   │   ├── pdf.py
+## Project Structure:
+```text
+project-root/
 │
 ├── frontend/
-│   ├── src/
-│   │   ├── pages/
-│   │   ├── services/
-│   │   ├── components/
-│   │   │  ├── auth/
-│   │   │  ├── common/
-│   │   │   ├── layout/
-│   │   ├── context/
-│   │   ├── types/
-│   │   ├── utils/
-│   │   ├── App.tsx
-│   │   ├── main.tsx
-│   │   ├── index.css
-│   ├── index.html
+│ │
+│ ├── public/
+│ │
+│ ├── src/
+│ │ ├── pages/
+│ │ │ ├── Login.tsx
+│ │ │ ├── Register.tsx
+│ │ │ ├── Dashboard.tsx
+│ │ │ ├── StudyItems.tsx # Tasks + Plans UI
+│ │ │ ├── Leaderboard.tsx
+│ │ │ ├── AIAssistant.tsx
+│ │ │ └── PDFSummarizer.tsx
+│ │ │
+│ │ ├── components/ 
+│ │ ├── services/ 
+│ │ ├── context/ 
+│ │ ├── routes/ 
+│ │ ├── App.tsx
+│ │ └── main.tsx
+│ │
+│ ├── package.json
+│ └── tsconfig.json
+│
+├── backend/
+│ │
+│ ├── main.py 
+│ ├── database.py 
+│ ├── dependencies.py 
+│ ├── auth.py
+│ ├── config.py 
+│ │
+│ ├── models.py 
+│ ├── schemas.py
+│ │
+│ ├── routers/
+│ │ ├── auth.py 
+│ │ ├── study_items.py
+│ │ ├── leaderboard.py
+│ │ ├── ai.py 
+│ │ └── pdf.py 
+│ │
+│ ├── .env 
+│ ├── requirements.txt
+│ └── README.md
+│
+├── .gitignore
+└── README.md
+```
 
 
 
-- Jaiswal Kashish
+
+-- Jaiswal Kashish

@@ -1,4 +1,4 @@
-from pydantic import BaseModel, constr
+from pydantic import BaseModel, constr, ConfigDict
 from typing import Optional
 
 class UserCreate(BaseModel):
@@ -28,8 +28,7 @@ class StudyItemResponse(BaseModel):
     type: str
     completed: bool
 
-    class Config:
-        from_attributes = True
+    model_config = ConfigDict(from_attributes=True)
 
 
 class AIQuestion(BaseModel):
